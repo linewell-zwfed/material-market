@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <iframe
+      id="webFrame"
+      src="http://localhost:3000/?vsembed=true"
+      style="
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: 999999;
+      "
+    ></iframe>
+
+    <script>
+      (function () {
+        const webFrame = document.getElementById("webFrame");
+        var vscode = acquireVsCodeApi();
+        
+        window.addEventListener("message", (event) => {
+          var data = event.data;
+          if (data.type == 'clientPostMessage') {
+            vscode.postMessage(data.data);
+          } else {
+            webFrame.contentWindow.postMessage(data, "*");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

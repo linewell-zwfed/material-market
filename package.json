@@ -1,0 +1,14 @@
+{
+	"private": true,
+  "name": "material",
+	"workspaces": [
+		"./client",
+		"./extension"
+	],
+  "scripts": {
+    "start": "yarn workspace webview start",
+    "build": "yarn build-client && yarn build-extension",
+    "build-client": "yarn workspace webview build",
+    "build-extension": "yarn workspace material vscode:prepublish"
+  }
+}
