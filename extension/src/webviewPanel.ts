@@ -36,6 +36,10 @@ export class WebviewPanel {
     this._panel.webview.postMessage(object);
   }
 
+  public closeWindow() {
+    this._panel.dispose();
+  }
+
   public dispose(): void {
     this._panel.dispose();
     while (this._disposables.length) {

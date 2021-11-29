@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import { Form, Input, Button, Collapse, Radio, message } from 'antd';
 import { getSavePath, createFile, getDefaultPath } from './utils/extensionService'
 import { AppContext } from './GlobalContext'
-import temps from './utils/generate-temp'
+import temps from './utils/generateTemp'
 import './App.css';
 
 const { Panel } = Collapse;
@@ -38,7 +38,7 @@ function App() {
     createFile({
       fileName: fileName + '.tsx',
       filePath: filePath,
-      fileContent: temp.gen(),
+      snippetPrefix: temp.snippetPrefix,
     }, vscode)
   }
 

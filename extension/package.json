@@ -7,12 +7,13 @@
 		"type": "git",
     "url": "https://github.com/linewell-zwfed/material-market"
 	},
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
 	"icon": "static/icon.png",
 	"categories": [
+		"Snippets",
 		"Other"
 	],
 	"activationEvents": [
@@ -33,12 +34,22 @@
 					"when": "explorerResourceIsFolder"
 				}
 			]
-		}
+		},
+		"snippets": [
+			{
+				"language": "javascriptreact",
+				"path": "./src/snippets/snippets.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./src/snippets/snippets.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "webpack --mode production",
-		"compile": "webpack --mode development",
-		"watch": "webpack --mode development --watch",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile && yarn run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js"

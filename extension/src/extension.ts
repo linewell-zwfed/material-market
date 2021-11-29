@@ -5,6 +5,8 @@ import * as mkdirp from 'mkdirp';
 import { WebviewPanel } from './webviewPanel';
 import { EXTENSION_COMMANDS } from './constants/commands';
 
+import * as snippets from './snippets/snippets.json';
+
 function writeFile(filePath: string, fileName: string, fileContent: string, cb: (e: any) => void) {
 	filePath = filePath.replace(/\/([a-zA-Z]:\/)/, '$1');
 	let fullpath = path.join(filePath, fileName);
@@ -31,11 +33,21 @@ export function activate(context: vscode.ExtensionContext) {
 
 			} else if (message.cmd === EXTENSION_COMMANDS.CREATE_FILE) {
 				const options = message.payload;
-				writeFile(options.filePath, options.fileName, options.fileContent,  err => {
+				let fileContent: string = '';
+
+			  let obj =	Object.values(snippets).find(el => el.prefix === options.snippetPrefix);
+				if (obj) {
+					fileContent = obj.body.join('\n');
+				} else {
+					return;
+				}
+
+				writeFile(options.filePath, options.fileName, fileContent,  err => {
 					if (err) {
 						vscode.window.showErrorMessage('创建文件失败!!!');
 					} else {
 						vscode.window.showInformationMessage('创建成功!!!');
+						webviewPanel.closeWindow();
 					}
 				});
 

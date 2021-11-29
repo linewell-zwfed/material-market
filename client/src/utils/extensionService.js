@@ -35,12 +35,12 @@ export const getSavePath = (options, vscode) => {
   )
 }
 
-export const createFile = ({filePath, fileName, fileContent}, vscode) => {
+export const createFile = ({filePath, fileName, snippetPrefix}, vscode) => {
   return postMessageAsync(
     EXTENSION_COMMANDS.CREATE_FILE,
     {
       payload: {
-        filePath, fileName, fileContent
+        filePath, fileName, snippetPrefix
       }
     },
     vscode
