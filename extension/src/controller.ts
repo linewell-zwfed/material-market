@@ -1,5 +1,5 @@
-import * as vscode from "vscode";
-import { WebviewPanel } from "./webviewPanel";
+import * as vscode from 'vscode';
+import { WebviewPanel } from './webviewPanel';
 
 export class Controller {
   private static _instance: Controller | undefined;
@@ -19,7 +19,7 @@ export class Controller {
     return this._instance;
   }
 
-  public static addMessageListener(cmd: string ,fn: (v: any) => any) {
+  public static addMessageListener(cmd: string, fn: (v: any) => any) {
     this.webviewPanelCtx.addListener(cmd, fn);
   }
 

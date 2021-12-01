@@ -21,15 +21,15 @@
 
     <script>
       (function () {
-        const webFrame = document.getElementById("webFrame");
+        const webFrame = document.getElementById('webFrame');
         var vscode = acquireVsCodeApi();
-        
-        window.addEventListener("message", (event) => {
+
+        window.addEventListener('message', (event) => {
           var data = event.data;
           if (data.type == 'clientPostMessage') {
             vscode.postMessage(data.data);
           } else {
-            webFrame.contentWindow.postMessage(data, "*");
+            webFrame.contentWindow.postMessage(data, '*');
           }
         });
       })();

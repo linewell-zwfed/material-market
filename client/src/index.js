@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {devVsCodeApi, AppContext} from './GlobalContext'
+import { devVsCodeApi, AppContext } from './GlobalContext';
 
 // eslint-disable-next-line no-undef
 const vscode = process.env.NODE_ENV === 'production' ? acquireVsCodeApi() : devVsCodeApi();

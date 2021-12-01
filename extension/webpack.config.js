@@ -11,7 +11,7 @@ const config = {
     filename: 'extension.js',
     libraryTarget: 'commonjs2',
     path: path.resolve(__dirname, 'out'),
-    clean: true
+    clean: true,
   },
   devtool: 'source-map',
   externals: {
@@ -24,15 +24,15 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
-          }
-        ]
+            loader: 'ts-loader',
+          },
+        ],
       },
     ],
   },
   resolve: {
     extensions: ['.ts', '.js'],
-  }
+  },
 };
 
 module.exports = config;

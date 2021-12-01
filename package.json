@@ -1,14 +1,60 @@
 {
-	"private": true,
+  "private": true,
   "name": "material",
-	"workspaces": [
-		"./client",
-		"./extension"
-	],
+  "workspaces": [
+    "./client",
+    "./extension"
+  ],
   "scripts": {
     "start": "yarn workspace webview start",
     "build": "yarn build-client && yarn build-extension",
     "build-client": "yarn workspace webview build",
-    "build-extension": "yarn workspace zwfed-material vscode:prepublish"
+    "build-extension": "yarn workspace zwfed-material vscode:prepublish",
+    "prettier": "prettier --write ./client/**/**/**/* ./extension/**/**/**/*",
+    "lint-staged": "lint-staged",
+    "changelog:create": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog:update": "conventional-changelog -p angular -i CHANGELOG.md -s"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint",
+      "git add"
+    ],
+    "**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint",
+      "git add"
+    ],
+    "**/*.{css,less,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "15.0.0",
+    "@commitlint/config-conventional": "15.0.0",
+    "@typescript-eslint/eslint-plugin": "5.5.0",
+    "@typescript-eslint/parser": "5.5.0",
+    "eslint": "8.3.0",
+    "eslint-config-alloy": "4.4.0",
+    "eslint-plugin-react": "7.27.1",
+    "husky": "4.2.5",
+    "lint-staged": "12.1.2",
+    "prettier": "2.5.0",
+    "typescript": "4.5.2"
   }
 }
