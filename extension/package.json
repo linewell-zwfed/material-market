@@ -6,48 +6,48 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/linewell-zwfed/material-market"
-  },
-  "version": "0.0.2",
-  "engines": {
-    "vscode": "^1.54.0"
-  },
-  "icon": "static/icon.png",
-  "categories": [
-    "Snippets",
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:material.materialMarket"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "material.materialMarket",
-        "title": "物料市场"
-      }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "material.materialMarket",
-          "when": "explorerResourceIsFolder"
-        }
-      ]
-    },
-    "snippets": [
-      {
-        "language": "javascriptreact",
-        "path": "./src/snippets/snippets.json"
-      },
-      {
-        "language": "typescriptreact",
-        "path": "./src/snippets/snippets.json"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "webpack --mode production",
+	},
+	"version": "0.0.3",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"icon": "static/icon.png",
+	"categories": [
+		"Snippets",
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:material.materialMarket"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "material.materialMarket",
+				"title": "物料市场"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "material.materialMarket",
+					"when": "explorerResourceIsFolder"
+				}
+			]
+		},
+		"snippets": [
+			{
+				"language": "javascriptreact",
+				"path": "./src/snippets/snippets.json"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./src/snippets/snippets.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
