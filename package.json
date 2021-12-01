@@ -9,6 +9,6 @@
     "start": "yarn workspace webview start",
     "build": "yarn build-client && yarn build-extension",
     "build-client": "yarn workspace webview build",
-    "build-extension": "yarn workspace material vscode:prepublish"
+    "build-extension": "yarn workspace zwfed-material vscode:prepublish"
   }
 }
