@@ -1,5 +1,6 @@
-import { EXTENSION_COMMANDS } from '../constants/commands'
+import { EXTENSION_COMMANDS } from '../constants/commands';
 
+// eslint-disable-next-line max-params
 const postMessageAsync = (cmd, data = {}, vscode, scopeId = Math.random()) => {
   const promise = new Promise((resolve) => {
     data.payload = data.payload || {};
@@ -10,47 +11,45 @@ const postMessageAsync = (cmd, data = {}, vscode, scopeId = Math.random()) => {
           resolve(event);
           window.removeEventListener('message', callbackVsCode);
         }
-      } 
+      }
     };
 
     window.addEventListener('message', callbackVsCode);
-    vscode.postMessage({...data, cmd});
+    vscode.postMessage({ ...data, cmd });
   });
 
   return promise;
-}
+};
 
 /**
  * 获取路径
  * @param {*} options vscode showOpenDialog 参数，详见 vscode 插件
- * @returns 
+ * @returns
  */
 export const getSavePath = (options, vscode) => {
   return postMessageAsync(
-    EXTENSION_COMMANDS.GET_FILE_PATH, 
+    EXTENSION_COMMANDS.GET_FILE_PATH,
     {
-      payload: options
+      payload: options,
     },
     vscode
-  )
-}
+  );
+};
 
-export const createFile = ({filePath, fileName, snippetPrefix}, vscode) => {
+export const createFile = ({ filePath, fileName, snippetPrefix }, vscode) => {
   return postMessageAsync(
     EXTENSION_COMMANDS.CREATE_FILE,
     {
       payload: {
-        filePath, fileName, snippetPrefix
-      }
+        filePath,
+        fileName,
+        snippetPrefix,
+      },
     },
     vscode
-  )
-}
+  );
+};
 
 export const getDefaultPath = (vscode) => {
-  return postMessageAsync(
-    EXTENSION_COMMANDS.GET_DEFAULT_PATH,
-    {},
-    vscode
-  )
-}
+  return postMessageAsync(EXTENSION_COMMANDS.GET_DEFAULT_PATH, {}, vscode);
+};

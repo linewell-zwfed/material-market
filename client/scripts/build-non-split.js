@@ -1,6 +1,7 @@
-const rewire = require("rewire");
-const defaults = rewire("react-scripts/scripts/build.js");
-let config = defaults.__get__("config");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const rewire = require('rewire');
+const defaults = rewire('react-scripts/scripts/build.js');
+let config = defaults.__get__('config');
 
 config.optimization.splitChunks = {
   cacheGroups: {
@@ -11,4 +12,4 @@ config.optimization.splitChunks = {
 config.optimization.runtimeChunk = false;
 
 config.output = config.output || {};
-config.output.publicPath = "";
+config.output.publicPath = '';
