@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as vscode from 'vscode';
 
 import { Controller } from './controller';
+import { deactivate } from './extension';
 
 export class WebviewPanel {
   private static _instance: WebviewPanel | undefined;
@@ -66,6 +67,7 @@ export class WebviewPanel {
       }
     }
     WebviewPanel._instance = undefined;
+    deactivate();
   }
 
   private _getHtmlForWebview(): string {
